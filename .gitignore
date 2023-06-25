@@ -1,0 +1,23 @@
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+Session.vim
+.idea/
+.vscode/
+
+*~
+[._]*.un~
+*.orig
+*.org
+*.orz
+*.bak
+
+_env.lua
+/_orz/
+
+!.keep
+!.gitkeep
