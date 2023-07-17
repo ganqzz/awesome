@@ -7,4 +7,5 @@ return {
     picom = true,
     locker = true,
     sloppy = false, -- sloppy focus
+    audacious = false,
 }

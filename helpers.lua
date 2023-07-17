@@ -81,7 +81,7 @@ end
 
 -- Run program
 
-function helpers.check_if_running(cmd, yes, no)
+function helpers.pgrep_apply(cmd, yes, no)
     awful.spawn.easy_async_with_shell(string.format("pgrep -c -u $USER -x %s", cmd), function(stdout)
         if tonumber(stdout) > 0 then
             if yes then yes() end
@@ -92,7 +92,7 @@ function helpers.check_if_running(cmd, yes, no)
 end
 
 function helpers.run_single_instance(cmd, props, findme)
-    helpers.check_if_running(findme or cmd, nil, function() awful.spawn(cmd, props) end)
+    helpers.pgrep_apply(findme or cmd, nil, function() awful.spawn(cmd, props) end)
 end
 
 function helpers.run_single_instance_cmdline(cmdline)

@@ -90,6 +90,8 @@ theme.tooltip_shape = r_rect_func
 
 theme.notification_shape = r_rect_func
 theme.notification_opacity = 0.8
+theme.notification_margin = dpi(6)
+theme.notification_border_width = dpi(2)
 
 -- titlebar icons
 theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"

@@ -29,6 +29,7 @@ local function new(args)
         -- awful.spawn(terminal .. " -e htop", { floating = true, placement = awful.placement.centered })
     end)))
 
+    -- TODO: read from /sys/class/power_supply/BAT0/{status,capacity}
     local function update(widget, stdout)
         local sts, perc = stdout:match(': (%w+), (%d+)%%')
         widget.markup = string.format("<b>%s</b> <b>%d</b><small><i>%%</i></small>", bat_sts[sts], perc)

@@ -20,6 +20,12 @@ end
 
 -- Autostart apps
 helpers.run_single_instance("thunar", { tag = "参" })
-helpers.run_single_instance("audacious", { tag = "六" })
+
+if RC.env.audacious then
+    helpers.pgrep_apply("audacious", nil, function()
+        require("services").scratchpad.get("audacious"):spawn_client(true)
+    end)
+end
+
 helpers.run_single_instance(RC.terminal, { tag = "壱" }, "alacritty")
 -- helpers.run_single_instance("vivaldi", { tag = "弐" }, "vivaldi-bin")

@@ -107,10 +107,10 @@ function scratchpad:attach_client(c, hidden)
 end
 
 -- Spawn new client
-function scratchpad:spawn_client()
+function scratchpad:spawn_client(hidden)
     local function on_manage(c)
         if awful.rules.match(c, self.rule) then
-            self:attach_client(c)
+            self:attach_client(c, hidden)
             client.disconnect_signal("manage", on_manage) -- one shot
         end
     end

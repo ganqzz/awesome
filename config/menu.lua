@@ -10,15 +10,15 @@ local spawn_func = helpers.spawn_func
 -- Create a launcher widget and a main menu
 local myawesomemenu = {
     { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-    { "manual",      RC.terminal .. " -e man awesome" },
-    { "edit config", RC.terminal .. " -e " .. RC.editor .. " " .. awesome.conffile },
+    --{ "manual",      RC.terminal .. " -e man awesome" },
+    --{ "edit config", RC.terminal .. " -e " .. RC.editor .. " " .. awesome.conffile },
     { "restart",     awesome.restart },
-    { "quit",        awesome.quit },
+    { "quit",        function() awesome.quit() end },
 }
 
 local exit_sub = {
     { text = 'Lock',      icon = RC.icons_dir .. 'lock.svg',       cmd = spawn_func("loginctl lock-session") },
-    { text = 'Log out',   icon = RC.icons_dir .. 'log-out.svg',    cmd = awesome.quit },
+    { text = 'Log out',   icon = RC.icons_dir .. 'log-out.svg',    cmd = function() awesome.quit() end },
     { text = 'Suspend',   icon = RC.icons_dir .. 'moon.svg',       cmd = spawn_func("systemctl suspend") },
     { text = 'Reboot',    icon = RC.icons_dir .. 'refresh-cw.svg', cmd = spawn_func("systemctl reboot") },
     { text = 'Power off', icon = RC.icons_dir .. 'power.svg',      cmd = spawn_func("systemctl poweroff") },
@@ -28,11 +28,10 @@ local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", RC.terminal }
 local menu_exit = { "Exit", exit_sub, RC.icons_dir .. 'power.svg' }
 
--- Load freedesktop menu entries
-local has_fdo, freedesktop = pcall(require, "freedesktop")
-
 local mymainmenu = nil
 
+-- Load freedesktop menu entries
+local has_fdo, freedesktop = pcall(require, "freedesktop")
 if has_fdo then
     mymainmenu = freedesktop.menu.build({
         before = { menu_awesome },

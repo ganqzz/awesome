@@ -20,8 +20,8 @@ end
 
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock('%a, %b %e, %l:%M %p')
-local month_calendar = awful.widget.calendar_popup.month({ spacing = 2, margin = 4 })
-month_calendar:attach( mytextclock, "tr" )
+local month_calendar = awful.widget.calendar_popup.month({ spacing = 2, margin = 6 })
+month_calendar:attach(mytextclock, "tr")
 
 -- local myclock_t = awful.tooltip {
 --     objects = { mytextclock },
