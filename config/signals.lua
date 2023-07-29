@@ -73,6 +73,7 @@ end
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
+--[[
 -- show the client titlebar on floating
 client.connect_signal("property::floating", function(c)
     if c.floating and not c.fullscreen and not c.maximized then
@@ -81,3 +82,13 @@ client.connect_signal("property::floating", function(c)
         awful.titlebar.hide(c)
     end
 end)
+
+-- hide the client titlebar on maximized
+client.connect_signal("property::maximized", function(c)
+    if c.maximized then
+        awful.titlebar.hide(c)
+    elseif c.floating then
+        awful.titlebar.show(c)
+    end
+end)
+--]]

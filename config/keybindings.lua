@@ -156,7 +156,7 @@ local globalkeys = gears.table.join(
     awful.key({ modkey }, "-", scratchpad.hide_all,
               {description = "hide all scratchpads", group = "scratchpad"}),
 
-    -- Prompt
+    -- Prompt(rofi)
     awful.key({ modkey }, "d", spawn_func("rofi -show drun -modi drun,run"),
         {description = "run prompt", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "d", spawn_func("rofi -show run -modi drun,run"),
