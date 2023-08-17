@@ -108,7 +108,7 @@ local function new(args)
         -- TODO art_url
         local status_text = status_table[player_info.status] or "✗"
         local len_h, len_m, len_s = convert_time_to_dec(player_info.length / 1000000)
-        mpris_widget.text = string.format("%s %s", status_text, helpers.ellipsize(player_info.title, 15))
+        mpris_widget.text = string.format("%s %s", status_text, helpers.ellipsize(player_info.title, args.text_length or 25))
         music_info_widget.markup = string.format(
             "[Title]: <b>%s</b>\n[Artist]: <b>%s</b>\n[Album]: <b>%s</b>\n[Length]: <b>%d</b>:<b>%02d</b>:<b>%02d</b>",
             player_info.title, player_info.artist, player_info.album, len_h, len_m, len_s)

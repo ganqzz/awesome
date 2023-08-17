@@ -18,6 +18,7 @@ scratchpad.add {
     command = "ala --class spad_ala",
     --sticky = true,
     --ontop = true,
+    center = false,
 }
 scratchpad.add {
     name = "audacious",

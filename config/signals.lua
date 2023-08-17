@@ -64,7 +64,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-if RC.env.sloppy then
+if RC.env.sloppy_focus then
     client.connect_signal("mouse::enter", function(c)
         c:emit_signal("request::activate", "mouse_enter", {raise = false})
     end)
@@ -73,22 +73,31 @@ end
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
---[[
--- show the client titlebar on floating
-client.connect_signal("property::floating", function(c)
-    if c.floating and not c.fullscreen and not c.maximized then
-        awful.titlebar.show(c)
-    else
-        awful.titlebar.hide(c)
-    end
-end)
+-- show client's titlebar on floating
+if RC.env.titlebar_on_floating then
+    client.connect_signal("property::floating", function(c)
+        if c.floating then
+            awful.titlebar.show(c)
+        else
+            awful.titlebar.hide(c)
+        end
+    end)
 
--- hide the client titlebar on maximized
-client.connect_signal("property::maximized", function(c)
-    if c.maximized then
-        awful.titlebar.hide(c)
-    elseif c.floating then
-        awful.titlebar.show(c)
-    end
-end)
---]]
+    -- hide the client titlebar on maximized
+    client.connect_signal("property::maximized", function(c)
+        if c.maximized then
+            awful.titlebar.hide(c)
+        elseif c.floating then
+            awful.titlebar.show(c)
+        end
+    end)
+
+    -- hide the client titlebar on fullscreen
+    client.connect_signal("property::fullscreen", function(c)
+        if c.fullscreen then
+            awful.titlebar.hide(c)
+        elseif c.floating then
+            awful.titlebar.show(c)
+        end
+    end)
+end

@@ -19,7 +19,8 @@ if RC.env.locker then
 end
 
 -- Autostart apps
-helpers.run_single_instance("thunar", { tag = "参" })
+helpers.run_single_instance(RC.terminal, { tag = "壱" }, "alacritty")
+-- helpers.run_single_instance("vivaldi", { tag = "弐" }, "vivaldi-bin")
 
 if RC.env.audacious then
     helpers.pgrep_apply("audacious", nil, function()
@@ -27,5 +28,6 @@ if RC.env.audacious then
     end)
 end
 
-helpers.run_single_instance(RC.terminal, { tag = "壱" }, "alacritty")
--- helpers.run_single_instance("vivaldi", { tag = "弐" }, "vivaldi-bin")
+if RC.env.file_manager then
+    helpers.run_single_instance(RC.env.file_manager, { tag = "参" })
+end

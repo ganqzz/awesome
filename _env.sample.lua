@@ -1,11 +1,14 @@
 -- `_env.lua` template
 
 return {
-    interface = "enp2s0", -- if false/nil, detect the interface that have internet access
+    sloppy_focus = false,
+    titlebar_on_floating = true,
+
+    interface = "enp2s0",
     bluetooth = false,
     battery = false,
     picom = true,
     locker = true,
-    sloppy = false, -- sloppy focus
     audacious = false,
+    file_manager = "pcmanfm",
 }

@@ -96,14 +96,14 @@ function scratchpad:attach_client(c, hidden)
         self.client = nil
     end)
 
-    -- Reset geometry because `restart` forgets the last geometry
-    self:set_geom()
-
     if hidden then
         self:_hide()
     else
         self:_show()
     end
+
+    -- Reset geometry because `restart` forgets the last geometry
+    self:set_geom()
 end
 
 -- Spawn new client
