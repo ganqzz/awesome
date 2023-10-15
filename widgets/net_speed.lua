@@ -1,19 +1,15 @@
 --
 local wibox = require("wibox")
-local gears = require("gears")
-local helpers = require("helpers")
 local awesome = awesome
 
 local function format_bytes(bytes)
-    local speed, dim
-    if bytes >= 1000 then
-        speed = bytes / 1000
-        dim = 'K'
+    if bytes >= 1000000 then
+        return string.format("<b>%.1f</b><small><i>M</i></small>", bytes / 1000000)
+    elseif bytes >= 1000 then
+        return string.format("<b>%.1f</b><small><i>K</i></small>", bytes / 1000)
     else
-        speed = bytes
-        dim = 'B'
+        return string.format("<b>%.0f</b>", bytes)
     end
-    return string.format('<b>%.f</b><small><i>%s</i></small>', speed, dim)
 end
 
 local function new(args)

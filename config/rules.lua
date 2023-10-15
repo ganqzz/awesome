@@ -39,8 +39,9 @@ awful.rules.rules = {
 
           "Nm-connection-editor",
           "Pavucontrol",
-          "Audacious",
           "Virt-manager",
+          "Audacious",
+          "org.ppsspp.PPSSPP",
         },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

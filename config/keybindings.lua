@@ -165,6 +165,8 @@ local globalkeys = gears.table.join(
 
     awful.key({ modkey }, "x", spawn_func(RC.home_dir .. ".config/rofi/powermenu.sh"),
               {description = "show exit menu", group = "awesome"}),
+    awful.key({ "Control", "Mod1" }, "l", spawn_func("lockscreen"),
+              {description = "lock screen", group = "awesome"}),
 
     -- Lua prompt
     awful.key({ modkey }, "@",
