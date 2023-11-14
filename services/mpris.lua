@@ -37,7 +37,7 @@ local function notify(stdout)
                 player_info.title = words[2]
                 player_info.artist = words[3]
                 player_info.album = words[4]
-                player_info.length = tonumber(words[5])
+                player_info.length = tonumber(words[5]) or 0
                 player_info.art_url = words[6]
             end
         end
